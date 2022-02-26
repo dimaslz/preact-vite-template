@@ -20,11 +20,11 @@ jobs:
           server_ip: ${{ secrets.CONNECTION_HOST }}
           user: ${{ secrets.CONNECTION_USER }}
           ssh_private_key: ${{ secrets.CONNECTION_PRIVATE_KEY }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           app_host: dimaslz.dev
           app_name: preact-vite
           static: true
-          # build_command: { { BUILD_COMMAND } }
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           env: |
-            NODE_ENV=production
             VITE_APP_TITLE="demo text from env"
+            NODE_ENV=production
+            
