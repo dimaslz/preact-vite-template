@@ -26,7 +26,6 @@ jobs:
           app_host: dimaslz.dev
           app_name: preact-vite
           static: true
-          app_ports: undefined
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           env: |
             NODE_ENV=production
