@@ -10,21 +10,25 @@ jobs:
   deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@master
 
       - name: GO!
-        uses: dimaslz/dimaslz-Action@wip2
+        uses: dimaslz/fito-deploy-action@beta
         with:
-          server_ip: ${{ secrets.CONNECTION_HOST }}
-          user: ${{ secrets.CONNECTION_USER }}
-          ssh_private_key: ${{ secrets.CONNECTION_PRIVATE_KEY }}
+          server_ip: ${{ secrets.FITO_ENV_CONNECTION_HOST }}
+          user: ${{ secrets.FITO_ENV_CONNECTION_USER }}
+          ssh_private_key: ${{ secrets.FITO_ENV_CONNECTION_PRIVATE_KEY }}
           app_host: dimaslz.dev
           app_name: preact-vite
           static: true
+          app_ports: undefined
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           env: |
-            VITE_APP_TITLE="demo text from env"
             NODE_ENV=production
+            VITE_APP_TITLE="demo text from env"
             
