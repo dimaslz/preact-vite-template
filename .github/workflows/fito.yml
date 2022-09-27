@@ -68,7 +68,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*\n./dist\n\n./"
+            path: "./Dockerfile\n./*\n./dist\n"
             key: "${{ github.sha }}-cache"
     create-and-push-docker-image: 
       name: "create and push docker image"
@@ -111,7 +111,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./*\n./dist\n./Dockerfile\n"
+            path: "./Dockerfile\n./*\n./dist\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "prepare connection"
