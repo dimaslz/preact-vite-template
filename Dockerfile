@@ -1,7 +1,7 @@
-FROM node:16.15.1-alpine3.16
+FROM nginx:1.23.1-alpine
 
 WORKDIR /app
 
-COPY ./dist /usr/share/nginx/html
+COPY /dist /usr/share/nginx/html
 
-CMD ["nginx", "-g", "daemon off;"]`;
+CMD ["nginx", "-g", "daemon off;"]
