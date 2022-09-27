@@ -37,7 +37,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: ".//Dockerfile\n./*"
+            path: "./Dockerfile\n./*"
             key: "${{ github.sha }}-cache"
     build-application: 
       name: "build application"
@@ -53,7 +53,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: ".//Dockerfile\n./*"
+            path: "./Dockerfile\n./*"
             key: "${{ github.sha }}-cache"
         - 
           name: "Build application"
@@ -62,7 +62,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: ".//Dockerfile\n./*\n./dist\n\n./"
+            path: "./Dockerfile\n./*\n./dist\n\n./"
             key: "${{ github.sha }}-cache"
     create-and-push-docker-image: 
       name: "create and push docker image"
@@ -73,8 +73,14 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: ".//Dockerfile\n./*\n./dist\n"
+            path: "./Dockerfile\n./*\n./dist\n"
             key: "${{ github.sha }}-cache"
+        - 
+          name: "DEMO A"
+          run: "ls -al"
+        - 
+          name: "DEMO B"
+          run: "cat Dockerfile"
         - 
           name: "Build docker image"
           run: "docker build .  -t ${{ env.ATTEMPTS }}.${{ github.sha }}.preact-vite.d7r.io.production.image"
@@ -85,7 +91,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: ".//Dockerfile\n./*\n./dist\n"
+            path: "./Dockerfile\n./*\n./dist\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "Push image"
@@ -99,7 +105,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./*\n./dist\n.//Dockerfile\n"
+            path: "./*\n./dist\n./Dockerfile\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "prepare connection"
