@@ -56,6 +56,12 @@
             path: "./Dockerfile\n./*"
             key: "${{ github.sha }}-cache"
         - 
+          name: "DEMO A"
+          run: "ls -al"
+        - 
+          name: "DEMO B"
+          run: "cat Dockerfile"
+        - 
           name: "Build application"
           run: "yarn build"
         - 
