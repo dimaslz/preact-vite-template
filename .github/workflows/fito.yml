@@ -53,7 +53,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*"
+            path: "./*"
             key: "${{ github.sha }}-cache"
         - 
           name: "DEMO A"
