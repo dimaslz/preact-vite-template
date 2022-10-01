@@ -37,7 +37,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*"
+            path: "./*"
             key: "${{ github.sha }}-cache"
     build-application: 
       name: "build application"
@@ -68,7 +68,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*\n./dist\n"
+            path: "./*\n./dist\n"
             key: "${{ github.sha }}-cache"
     create-and-push-docker-image: 
       name: "create and push docker image"
@@ -79,7 +79,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*\n./dist\n"
+            path: "./*\n./dist\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "DEMO A"
@@ -97,7 +97,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*\n./dist\n"
+            path: "./*\n./dist\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "Push image"
@@ -111,7 +111,7 @@
           name: "Cache"
           uses: "actions/cache@main"
           with: 
-            path: "./Dockerfile\n./*\n./dist\n"
+            path: "./*\n./dist\n"
             key: "${{ github.sha }}-cache"
         - 
           name: "prepare connection"
