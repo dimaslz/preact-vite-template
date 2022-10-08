@@ -77,7 +77,7 @@
             key: "${{ github.sha }}-cache"
         - 
           name: "Build docker image"
-          run: "docker build . --file ./  -t ${{ env.ATTEMPTS }}.${{ github.sha }}.preact-vite.d7r.io.production.image"
+          run: "docker build . --file Dockerfile  -t ${{ env.ATTEMPTS }}.${{ github.sha }}.preact-vite.d7r.io.production.image"
         - 
           name: "prepare connection"
           run: "mkdir -p ~/.ssh/\necho \"$SSH_KEY\" > ~/.ssh/prod.key\nchmod 600 ~/.ssh/prod.key\ncat >>~/.ssh/config <<END\nHost prod\n  HostName $SSH_HOST\n  User $SSH_USER\n  IdentityFile ~/.ssh/prod.key\n  StrictHostKeyChecking no\nEND"
