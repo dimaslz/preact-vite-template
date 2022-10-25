@@ -79,7 +79,7 @@
             key: "${{ github.sha }}-cache"
         - 
           name: "Build docker image"
-          run: "docker build . --file Dockerfile --build-arg VITE_APP_TITLE=${{secrets.FITO_ENV_VITE_APP_TITLE}} -t ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_image"
+          run: "docker build . --file Dockerfile --build-arg VITE_APP_TITLE=\"${{secrets.FITO_ENV_VITE_APP_TITLE}}\" -t ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_image"
         - 
           name: "prepare connection"
           run: "mkdir -p ~/.ssh/\necho \"$SSH_KEY\" > ~/.ssh/prod.key\nchmod 600 ~/.ssh/prod.key\ncat >>~/.ssh/config <<END\nHost prod\n  HostName $SSH_HOST\n  User $SSH_USER\n  IdentityFile ~/.ssh/prod.key\n  StrictHostKeyChecking no\nEND"
@@ -117,7 +117,7 @@
           run: "currentContainerGithubHash=`ssh prod \"docker ps --format=\\\"{{.Names}} {{.ID}}\\\" | grep \\\"preact-vite.d7r.io\\\" || echo \\\"\\\"\"` && currentContainerGithubHash=`echo $currentContainerGithubHash | grep -Po \"^.+?\\.\" || echo \"\"` && echo \"currentContainerGithubHash=$currentContainerGithubHash\" >> $GITHUB_ENV"
         - 
           name: "run"
-          run: "newContainerID=`ssh prod \"docker run --name ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_container -e VITE_APP_TITLE=${{secrets.FITO_ENV_VITE_APP_TITLE}}  -d ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_image\"` && echo \"newContainerID=$newContainerID\" >> $GITHUB_ENV"
+          run: "newContainerID=`ssh prod \"docker run --name ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_container -e VITE_APP_TITLE=\"${{secrets.FITO_ENV_VITE_APP_TITLE}}\"  -d ${{ env.ATTEMPTS }}_${{ github.sha }}_preact-vite.d7r.io_production_image\"` && echo \"newContainerID=$newContainerID\" >> $GITHUB_ENV"
         - 
           name: "get container IP"
           run: "newContainerIP=`ssh prod \"docker inspect -f \\\"{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}\\\" ${{ env.newContainerID }}\"` && echo \"newContainerIP=$newContainerIP\" >> $GITHUB_ENV"
