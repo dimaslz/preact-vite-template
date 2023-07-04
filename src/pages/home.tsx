@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <Logo />
-      <p>Hello Vite + Tailwind + Preact!</p>
+      <h1 class='text-4xl'>Hello Vite + Tailwind + Preact!</h1>
       <p>
         <a
           className="text-white"
