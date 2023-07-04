@@ -1,20 +1,15 @@
-import { Logo } from './logo'
+import { Router, Route } from "preact-router";
 
-export function App() {
+import Home from '@/pages/home'
+import Other from "@/pages/other";
+
+const App = () => {
   return (
-    <>
-      <Logo />
-      <p>Hello Vite + Preact!</p>
-      <p>
-        <a
-          class="link"
-          href="https://preactjs.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Preact
-        </a>
-      </p>
-    </>
+    <Router>
+      <Route path="/" component={Home} />
+      <Route path="/other" component={Other} />
+    </Router>
   )
 }
+
+export default App;

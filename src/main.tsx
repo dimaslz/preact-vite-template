@@ -1,6 +1,8 @@
-import { render } from 'preact'
-import { App } from './app'
-import './index.css'
+import './index.css';
+
+import { render } from 'preact';
+import App from './app';
+
 
 const { VITE_APP_TITLE } = import.meta.env;
 
